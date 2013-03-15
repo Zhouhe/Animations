@@ -1,0 +1,64 @@
+<!--
+Two animation examples. 
+1. One implemented using CSS key frames and one omplemented using javascript/jquery.
+2. Allow user to interact with these animations via a standard form or other input control
+3. Using HTML5, CSS3 and JavaScript only. (exception jQuery)
+4. Work accross all modern browsers (Chrome, Firefox,Safari,IE9+)
+5. Work on tablet and smart phone.
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Animations of Hefen</title>		
+		<!-- the link for different device -->
+		<link type="text/css" href="desktop.css" 
+		  rel="stylesheet" 
+		  media="screen"/>
+		<link type="text/css" href="tablet.css" 
+		  rel="stylesheet" 
+		  media="screen and (min-width:481px)
+						and (max-width:768px)"/>
+		<link type="text/css" href="mobile.css" 
+		  rel="stylesheet" 
+		  media="screen and (min-width:0px)
+						and (max-width:480px)"/>
+		<script src="jquery-1.9.1.min.js"></script>	
+		<!--[if lt IE 9]> 
+		<script>
+			$(document).ready(function(){	
+				$(".animate1").animate({left:'450px'});	
+			});
+		</script>	
+		<![endif]-->
+		<script>
+			$(document).ready(function(){	
+				$(".animate3").hide();
+				$(".animate4").hide();	
+			});
+		</script>	
+		<script>
+			function showgreat(){
+				$(".animate4").hide();	
+				$(".animate3").show();
+				$(".animate3").animate({left:'150px'},"slow");	
+			}		
+			function showless(){
+				$(".animate3").hide();	
+				$(".animate4").show();	
+				$(".animate4").animate({right:'-150px'},"slow");		
+			}
+		</script>
+	</head>
+	<body>
+		<h1><span style="color:#ccff00;">Pear,</span><span style="color:red;"> Strawberry, </span>which one is your favor?</h1>
+		<div id="wrapper">
+			<img src="pear.png" alt="pear" class="animate1" />	
+			<img src="great.png" alt="great" class="animate3" />	
+			<img src="less.png" alt="less" class="animate4" />			
+			<img src="strawberry.png" alt="strawberry" class="animate2" />	
+			<br/><br/>
+			<button type="button" class="animate1" style="height:35px; font-size:12px; color:#ccff66; background-color:#0099ff;" onclick="showgreat()"> Pear </button>
+			<button type="button" class="animate2" style="height:35px; font-size:12px; color:red; " onclick="showless()"> Strawberry </button>
+		</div>
+	</body>
+</html>
