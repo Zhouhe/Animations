@@ -1,0 +1,84 @@
+<!--
+There are two animation examples. 
+One is designed by canvas.
+The other is designed by javascript/jquery.
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Animation Examples</title>
+<style>
+#showAnimate {
+	border-style: double;
+}
+#s1 {
+	text-align: left;
+}
+</style>
+<!-- Load jQuery -->
+<script type="text/javascript" src="jquery-1.9.1js" type="text/javascript">
+</script>
+<script type="text/javascript">
+	// S1 animation using canvas:
+	// set boundary limits 
+	var x=100;
+	var y=200;
+	var dx=5;
+	var dy=5;
+	
+	CanvasMaster=new Object();
+	
+	CanvasMaster.showCircle=function()
+	{
+	canvasNow  = document.getElementById("showAnimate");
+	ctx = canvasNow.getContext('2d');
+	ctx.beginPath();
+	ctx.arc(140,180,40,0,Math.PI*2,false);
+	ctx.closePath();
+	ctx.fillStyle="purple";
+	ctx.lineWidth=3;
+	ctx.stroke();
+	ctx.fill();
+	}
+	//show animation 
+	CanvasMaster.showAnimate=function()
+	{		
+		setInterval(draw,10); // draw every 10 mile second.
+	}	
+	
+	function draw()
+	{
+	ctx.clearRect(0,0,300,460); //clear whole canvas
+	ctx.beginPath();
+	ctx.arc(x,y,40,0,Math.PI*2,false);
+	ctx.closePath();
+	ctx.fill();
+	ctx.stroke();
+	// boundary logic
+	if (x<40||x>260) dx=-dx;
+	if (y<40||y>400) dy=-dy;
+	x += dx;
+	y += dy;
+	}	
+	//s2 animations
+	$(document).ready(function() {	
+		$("#s2").animate({letterSpacing: "15px"}).delay(1000);
+		$("#s2").animate({letterSpacing: "0px"});
+		setTimeout("animateSpace()", 4000);	
+	});
+</script>
+</head>
+<body>	
+	<section>
+		<canvas id="showAnimate" width="300" height="460">No HTML5</canvas>
+		<script type="text/javascript">
+			CanvasMaster.showCircle();
+		</script>
+		<div id="s1">
+			<button onClick="CanvasMaster.showAnimate()">Click for Animation</button>
+		</div>	
+	</section>
+	<section id="s2">Animate <img src="pear.png" />can be used to do lots of stuff</section>	
+</body>
+</html>

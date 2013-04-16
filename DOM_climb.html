@@ -1,0 +1,81 @@
+<!-- DOM_climb.html
+	.remove and .detach
+	.remove - is removed from DOM permanently
+	.detach - is removed but held so can be reattached
+-->
+<html>
+<head>
+<title>DOM Climb</title>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<style>
+	.pieApple { 
+		color: red; 
+		font-size: 24pt;}
+	.pieStrawberry { 
+		color: pink;
+		font-size: 36pt;}
+	#aniSpc {
+		position: absolute;
+		font-size: 24pt;
+		left: 200px;
+		width: 600px;
+		border: thin solid black;
+		padding: 10px;
+	}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {	
+		$("#rbutton").click(function()
+			{ $("img#pear").remove();  });
+
+		$("#dbutton").click(function()
+			{ $a = $("img#strawberry").detach(); });
+			
+		$("#d2button").click(function()
+			{ $("img#apple").last().after($a); });
+			
+		$("#abutton").click(function()
+			{ $(".pieApple").replaceWith("<p class='pieStawberry'><img src='strawberry.png' />Pie</p>");  });
+			
+		chainit();
+		animateSpace();
+	});
+	
+	function chainit() {
+		$("#chain").fadeIn(2000).fadeOut(2000);
+		setTimeout("chainit()", 4000);
+	}
+	
+	function animateSpace() {
+		$("#aniSpc").animate({letterSpacing: "15px"}).delay(1000);
+		$("#aniSpc").animate({letterSpacing: "0px"});		
+		setTimeout("animateSpace()", 4000);
+	}
+	
+	function stpbutton() {
+		$.fx.off = true;
+	}
+</script>
+
+</head>
+<body>
+	<img id="pear" src="pear.png"/>
+	<img id="strawberry" src="strawberry.png"/>
+	<img id="apple" src="red-apple.jpg" />
+
+	<hr />
+	
+	<button id="rbutton">Click to remove PEAR</button>
+	<button id="dbutton">Click to detach STRAWBERRY</button>
+	<button id="d2button">Click to restore Strawberry</button>
+	<hr />
+	<p class="pieApple"><img src="red-apple.jpg" />Pie</p>
+
+	<button id="abutton">Click to replace apple with strawberry</button>
+	<hr />
+	<section id="chain"><img src="red-apple.jpg" /></section>
+	<section id="aniSpc">Animate <img src="pear.png" />can be used to do lots of stuff</section>
+	
+</body>
+</html>
+

@@ -1,0 +1,62 @@
+<!-- expresstrains.html -->
+<html>
+<head>
+<title>Go Express Trains</title>
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<style>
+	.express{
+		font-size:30;
+		color:red;
+		font-weight:bold;
+	}
+	.stops{
+		font-size:24;
+		color:blue;
+		font-weight:bold;
+		background:yellow;
+	}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+//$("li:contains('Express')").css("text-decoration", "underline"); //select some elements that contains 'Express'
+	$("#ebutton").click(function(){
+		$("li:contains('Express')").addClass("express"); //text-decoration", "underline"); 
+	});
+	
+	$("#sbutton").click(function(){
+		$("li:contains('stops')").addClass("stops"); //text-decoration", "underline"); 
+	});
+	
+	$("#rebutton").click(function(){
+		$("li:contains('Express')").removeClass("express"); //text-decoration", "underline"); 
+	});
+	
+	$("#rsbutton").click(function(){
+		$("li:contains('stops')").removeClass("stops"); //text-decoration", "underline"); 
+	});
+});
+</script>
+</head>
+
+<body>
+<h3>Oakville GO Station - Morning Rush Hour Departures to Union.</h3>
+<ul>
+<li>06 26 </li>
+
+<li>06 55 (Express) </li>
+<li>07 05( 4 stops)</li>
+<li>07 05 (Express)</li>
+<li>07 25</li>
+<li>07 35 (Express)</li>
+<li>(3 stops)/07 45</li>
+<li>07 58 (Express)</li>
+<li>08 20 (Express)</li>
+</ul>
+<p></p>
+<button type="button" id="ebutton"> HL express</button>
+<button type="button" id="sbutton"> HL stops</button>
+<button type="button" id="rebutton"> Remove HL express</button>
+<button type="button" id="rsbutton">Remove HL stops</button>
+
+</body>
+</html>
